@@ -9,15 +9,19 @@ namespace GTOS
     {
         protected override void BeforeRun()
         {
-            Console.WriteLine("Cosmos booted successfully. Type a line of text to get it echoed back.");
+            Console.Clear();
+            Console.WriteLine("GTOS v0.1.2");
+            GTOS.HAL.Network.NetworkInterfaces.Init();
+            foreach (Cosmos.HAL.NetworkDevice device in Cosmos.HAL.NetworkDevice.Devices)
+            {
+                Console.WriteLine(device.MACAddress.ToString());
+            }
         }
 
         protected override void Run()
         {
-            Console.Write("Input: ");
+            Console.Write("Command > DONE");
             var input = Console.ReadLine();
-            Console.Write("Text typed: ");
-            Console.WriteLine(input);
         }
     }
 }
